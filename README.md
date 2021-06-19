@@ -1,2 +1,2 @@
-# spring-aop
+# aop-spring
 Spring aspect-oriented programming example
