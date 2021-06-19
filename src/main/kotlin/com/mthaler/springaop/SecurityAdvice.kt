@@ -5,10 +5,8 @@ import java.lang.reflect.Method
 
 class SecurityAdvice(): MethodBeforeAdvice {
 
-    private val securityManager = SecurityManager()
-
     override fun before(method: Method, args: Array<out Any>, target: Any?) {
-        val user = securityManager.getLoggedOnUser()
+        val user = SecurityManager.getLoggedOnUser()
 
         if (user == null) {
             println("No user authenticated");

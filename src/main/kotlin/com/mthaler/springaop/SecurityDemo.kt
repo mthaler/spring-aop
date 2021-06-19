@@ -3,21 +3,20 @@ package com.mthaler.springaop
 import org.springframework.aop.framework.ProxyFactory
 
 fun main(args: Array<String>) {
-    val mgr = SecurityManager()
 
     val bean = getSecureBean()
 
-    mgr.login("John", "pwd")
+    SecurityManager.login("John", "pwd")
     bean.writeSecureMessage()
-    mgr.logout()
+    SecurityManager.logout()
 
     try {
-        mgr.login("invalid user", "pwd")
+        SecurityManager.login("invalid user", "pwd")
         bean.writeSecureMessage()
     } catch (ex: SecurityException) {
         println("Exception Caught: " + ex.message)
     } finally {
-        mgr.logout()
+        SecurityManager.logout()
     }
 
     try {

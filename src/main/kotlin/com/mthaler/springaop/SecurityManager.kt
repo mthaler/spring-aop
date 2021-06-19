@@ -1,18 +1,18 @@
 package com.mthaler.springaop
 
-class SecurityManager {
+object SecurityManager {
 
-    private val threadLocal = ThreadLocal<UserInfo?>()
+    private var userInfo: UserInfo? = null
 
     fun login(userName: String, password: String) {
-        threadLocal.set(UserInfo(userName, password))
+        userInfo = UserInfo(userName, password)
     }
 
     fun logout() {
-        threadLocal.set(null)
+        userInfo = null
     }
 
     fun getLoggedOnUser(): UserInfo? {
-        return threadLocal.get()
+        return userInfo
     }
 }
