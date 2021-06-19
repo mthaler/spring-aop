@@ -3,7 +3,9 @@ package com.mthaler.springaop
 import org.springframework.aop.MethodBeforeAdvice
 import java.lang.reflect.Method
 
-class SecurityAdvice(val securityManager: SecurityManager): MethodBeforeAdvice {
+class SecurityAdvice(): MethodBeforeAdvice {
+
+    private val securityManager = SecurityManager()
 
     override fun before(method: Method, args: Array<out Any>, target: Any?) {
         val user = securityManager.getLoggedOnUser()
